@@ -50,7 +50,7 @@ public class BasicOPController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         List<Integer> dbs = new ArrayList<>();
-        for(int i=0; i < 16; i++){
+        for (int i = 0; i < 16; i++) {
             dbs.add(i);
         }
         selectBox.setItems(FXCollections.observableArrayList(dbs));
@@ -65,15 +65,15 @@ public class BasicOPController implements Initializable {
         port = Integer.parseInt(portText.getText());
         password = passwordText.getText();
         jedis = new Jedis(ip, port);
-        if(password != null && password.length() > 0){
+        if (password != null && password.length() > 0) {
             jedis.auth(password);
         }
         String res = jedis.ping();
-        if(res.equals("PONG")){
+        if (res.equals("PONG")) {
             connected = true;
             connBth.setText("æ–­å¼€è¿æ¥");
             info(res);
-        }else{
+        } else {
             error("è¿æ¥å¤±è´¥");
         }
 
@@ -83,33 +83,36 @@ public class BasicOPController implements Initializable {
 
 
     public void selectDB(ActionEvent actionEvent) {
-        if(connected){
-            if(selectBox.getValue() != db){
+        if (connected) {
+            if (selectBox.getValue() != db) {
                 db = selectBox.getValue();
                 String res = jedis.select(db);
                 info(res);
             }
-        }else{
+        } else {
             warn(MSG_NO_CONNECT);
         }
     }
 
 
-
-    private void info(String msg){
+    private void info(String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.titleProperty().set("ä¿¡æ¯");
         alert.headerTextProperty().set(msg);
         alert.showAndWait();
     }
 
-    private void warn(String msg){
+    private void warn(String msg) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.titleProperty().set("è­¦å‘Š");
         alert.headerTextProperty().set(msg);
         alert.showAndWait();
     }
 
-    private void error(String msg){
-        Alert alert = new Alert(Alert.AlertType.l„6k™©ıD¿àŠôÓs«’æõ¹)|bìÒ‰"!IfVŠÜ!}cÜÌØªÜ“€[nPÛ˜éEÇ{.PpßEºyÒ·u+\wd7ê¨Õ¶Â#[VÜÎI“Çş7(ø²Ä7B‹³Äº
-F•Ì¿g/ò~Ì«GhfZHíŸZ¹ÏLHÅqö;Ü0x
+    private void error(String msg) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.titleProperty().set("é”™è¯¯");
+        alert.headerTextProperty().set(msg);
+        alert.showAndWait();
+    }
+}
