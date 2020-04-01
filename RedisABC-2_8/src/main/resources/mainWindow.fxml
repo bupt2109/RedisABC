@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BasicOPController">
+   <top>
+      <HBox prefHeight="50.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" minHeight="50.0" minWidth="600.0" prefHeight="50.0" prefWidth="800.0" text="Redis 使用工具" textAlignment="CENTER">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <right>
+      <VBox prefHeight="500.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label minHeight="30.0" minWidth="200.0" text="报文数据：" />
+            <TextArea fx:id="historyData" minHeight="470.0" minWidth="200.0" prefHeight="521.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+   </right>
+   <center>
+      <VBox prefHeight="500.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="60.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" text="IP：" />
+                  <TextField fx:id="ipText" prefHeight="60.0" prefWidth="134.0" text="127.0.0.1" />
+                  <Label prefHeight="60.0" text="端口：" />
+                  <TextField fx:id="portText" prefHeight="60.0" prefWidth="63.0" text="6379" />
+                  <Label prefHeight="60.0" text="密码：" />
+                  <TextField fx:id="passwordText" prefHeight="60.0" />
+                  <Button fx:id="connBth" mnemonicParsing="false" onAction="#connRedis" prefHeight="60.0" prefWidth="110.0" text="连接" />
+                  <ComboBox fx:id="selectBox" onAction="#selectDB" prefHeight="60.0" prefWidth="60.0" promptText="0" />
+               </children></HBox>
+            <TabPane prefHeight="490.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="String">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+                <Tab text="List">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+                  <Tab text="Set">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                  </Tab>
+                  <Tab text="Hash">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                  </Tab>
+                  <Tab text="Zset">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                  </Tab>
+                  <Tab text="其他">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
